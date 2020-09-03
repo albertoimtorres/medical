@@ -96,3 +96,27 @@ DATABASES = {
 
 ##### Usuario: admin
 ##### Contraseña: admin
+
+La creación y obtención de datos se puede realizar de dos formas diferentes.
+
+## API REST
+
+Endpoint para crear recurso.
+
+##### [POST] /paciente/v1/records
+
+Endpoint para recuper un recurso por id
+
+##### [GET] /paciente/v1/records/:id
+
+## MVT (Model-View-Template)
+
+Creación de una interfaz CRUD utilizando vistas basadas en clases.
+
+Registro
+
+![alt text](./static/img/registro.png)
+
+Listado
+
+![alt text](./static/img/registro.png)
