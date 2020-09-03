@@ -58,7 +58,7 @@ def obtener_paciente(request, id):
     try:
         paciente = Paciente.objects.get(pk=id)
         serializer = PacienteSerializer(paciente)
-        return JsonResponse(serializer.data)
+        return JsonResponse({'codigo': status.HTTP_200_OK, 'menaje': 'success', 'payload': serializer.data})
     except Paciente.DoesNotExist as err:
         return JsonResponse(({'codigo': status.HTTP_404_NOT_FOUND, 'mensaje': 'El id de paciente no existe.'}), status=status.HTTP_404_NOT_FOUND)
 
