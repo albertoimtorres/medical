@@ -1,0 +1,6 @@
+django==3.0.5
+unipath==1.1
+psycopg2==2.8.5
+djangorestframework==3.11.1
+markdown==3.2.2
+django-filter==2.3.0

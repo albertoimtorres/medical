@@ -1,0 +1,36 @@
+{% extends '../base.html' %}
+
+{% block container %}
+    <blockquote class="blockquote">
+        <p class="mb-0">Listado de Pacientes</p>
+    </blockquote>
+    {% if pacientes|length > 0 %}
+        <table class="table">
+            <th scope="col">#</th>
+            <th scope="col">Número de Expediente</th>
+            <th scope="col">Tipo de Sangre</th>
+            <th scope="col">Alergias</th>
+            {% for paciente in pacientes %}
+                <tr>
+                    <td>{{ paciente.0 }}</td>
+                    <td>{{ paciente.no_expediente }}</td>
+                    <td>{{ paciente.tipo_sangre }}</td>
+                    
+                    {% if paciente.alergias|length > 0 %}
+                        <td>
+
+                            {% for alergia in paciente.alergias %}
+                                {{ alergia }}
+                            {% endfor %}
+                                
+                        </td>
+                    {% else  %}
+                        <td>No se han registrado alergias.</td>
+                    {% endif %}
+                </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <h1>No hay registro de pacientes.</h1>
+    {% endif %}
+{% endblock %}
