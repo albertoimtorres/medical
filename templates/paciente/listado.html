@@ -1,36 +1,73 @@
 {% extends '../base.html' %}
 
 {% block container %}
+
     <blockquote class="blockquote">
         <p class="mb-0">Listado de Pacientes</p>
     </blockquote>
+    
     {% if pacientes|length > 0 %}
-        <table class="table">
-            <th scope="col">#</th>
-            <th scope="col">Número de Expediente</th>
-            <th scope="col">Tipo de Sangre</th>
-            <th scope="col">Alergias</th>
-            {% for paciente in pacientes %}
+        <table class="table table-hover">
+            <thead role="rowgroup">
+              <colgroup>
+                <col style="width: 10%"/>
+                <col style="width: 20%"/>
+                <col style="width: 20%"/>
+                <col style="width: 10%"/>
+              </colgroup>
+              <thead>
                 <tr>
-                    <td>{{ paciente.0 }}</td>
-                    <td>{{ paciente.no_expediente }}</td>
-                    <td>{{ paciente.tipo_sangre }}</td>
-                    
-                    {% if paciente.alergias|length > 0 %}
-                        <td>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                  <th colspan="4" style="text-align: center;">Alergias</th>
+                </tr>
+              </thead>
+              <tr>
+                <th>#</th>
+                <th>Número de expediente</th>
+                <th>Tipo de Sangre</th>
+                <th>Nombre</th>
+                <th>Medicamento</th>
+                <th>Fecha</th>
+              </tr>
+            </thead>
+            <tbody role="rowgroup">
+                {% for paciente in pacientes.all %}
+                    <tr rowspan="4">
+
+                        <td rowspan="4">{{ paciente.id }}</td>
+                        <td rowspan="4">{{ paciente.no_expediente }}</td>
+                        <td rowspan="4">{{ paciente.tipo_sangre }}</td>
+
+                        {% if paciente.alergias|length > 0 %}
 
                             {% for alergia in paciente.alergias %}
-                                {{ alergia }}
+
+                                {% if alergia.counter == 0 %}
+                                    <td>{{ alergia.nombre }}</td>
+                                    <td>{{ alergia.medicamento }}</td>
+                                    <td>{{ alergia.fecha }}</td>
+                                {% else %}
+                                    <tr>
+                                        <td>{{ alergia.nombre }}</td>
+                                        <td>{{ alergia.medicamento }}</td>
+                                        <td>{{ alergia.fecha }}</td>
+                                    </tr>
+                                {% endif %}
+
                             {% endfor %}
-                                
-                        </td>
-                    {% else  %}
-                        <td>No se han registrado alergias.</td>
-                    {% endif %}
-                </tr>
-            {% endfor %}
-        </table>
+
+                        {% endif %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+          </table>
     {% else %}
+
         <h1>No hay registro de pacientes.</h1>
+        
     {% endif %}
+        
+
 {% endblock %}
