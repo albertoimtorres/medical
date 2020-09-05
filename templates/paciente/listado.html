@@ -55,9 +55,14 @@
                                         <td>{{ alergia.fecha }}</td>
                                     </tr>
                                 {% endif %}
-
                             {% endfor %}
 
+                        {% else %}
+                            <tr>
+                            </tr>
+                                <td colspan="4" style="text-align:center;">No se han registrado alergias</td>
+                            <tr>
+                            </tr>
                         {% endif %}
                     </tr>
                 {% endfor %}
