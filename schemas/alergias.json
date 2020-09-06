@@ -35,7 +35,7 @@
             "title": "The medicamento schema",
             "description": "Validar nombre de medicamento y gramaje.",
             "default": "",
-            "pattern": "^\\D* \\d{1,4}(tabs|mg|ml|caps)$",
+            "pattern": "^[a-zA-Z+ ]*\\d(?:[,.]*\\d{1,4})?(?:[ ])?(tableta|g|mg|mg/ml|capsulas)*$",
             "examples": [
                 "Ospirin tabletas 100mg"
             ]
