@@ -25,7 +25,7 @@ class Paciente(models.Model):
         validators=[
             RegexValidator(
                 regex=r"^(A|B|AB|O)[+-]$",
-                message='Solo se admite el tipo de sangre.'
+                message='Solo se admite el tipo de sangre (A+|A-|B+|B-|C+|C-|AB+|AB-).'
             )
         ],
         max_length=3
