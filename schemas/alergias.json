@@ -1,0 +1,56 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "http://example.com/example.json",
+    "type": "object",
+    "title": "The root schema",
+    "description": "The root schema comprises the entire JSON document.",
+    "default": {},
+    "examples": [
+        {
+            "nombre": "Rinitivis",
+            "medicamento": "03/09/10",
+            "fecha": "Ospirin tabletas 100mg"
+        }
+    ],
+    "required": [
+        "nombre",
+        "medicamento",
+        "fecha"
+    ],
+    "properties": {
+        "nombre": {
+            "$id": "#/properties/nombre",
+            "type": "string",
+            "title": "The nombre schema",
+            "description": "Validar nombre de alergia.",
+            "default": "",
+            "pattern": "^[ a-zA-ZÀ-ÿ\u00f1\u00d1]*$",
+            "examples": [
+                "Rinitivis"
+            ]
+        },
+        "medicamento": {
+            "$id": "#/properties/medicamento",
+            "type": "string",
+            "title": "The medicamento schema",
+            "description": "Validar nombre de medicamento y gramaje.",
+            "default": "",
+            "pattern": "^\\D* \\d{1,4}(tabs|mg|ml|caps)$",
+            "examples": [
+                "Ospirin tabletas 100mg"
+            ]
+        },
+        "fecha": {
+            "$id": "#/properties/fecha",
+            "type": "string",
+            "title": "The fecha schema",
+            "description": "Valida formato de fecha.",
+            "default": "",
+            "pattern": "^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\\d\\d$",
+            "examples": [
+                "03/09/10"
+            ]
+        }
+    },
+    "additionalProperties": true
+}
