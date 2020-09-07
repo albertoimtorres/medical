@@ -248,7 +248,7 @@ CREATE TYPE paciente_paciente AS (
 	id int4,
 	no_expediente int4,
 	tipo_sangre varchar(3),
-	alergias _varchar);
+	alergias _jsonb);
 
 -- DROP SEQUENCE public.auth_group_id_seq;
 
@@ -519,7 +519,7 @@ CREATE TABLE public.paciente_paciente (
 	id serial NOT NULL,
 	no_expediente int4 NOT NULL,
 	tipo_sangre varchar(3) NOT NULL,
-	alergias _varchar NOT NULL,
+	alergias _jsonb NOT NULL,
 	CONSTRAINT paciente_paciente_no_expediente_key UNIQUE (no_expediente),
 	CONSTRAINT paciente_paciente_pkey PRIMARY KEY (id)
 );
