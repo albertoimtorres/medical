@@ -48,4 +48,4 @@ class Paciente(models.Model):
     )
 
     def __str__(self):
-        return str(self.no_expediente) + ' - ' + self.tipo_sangre
+        return str(self.no_expediente) + ' - ' + self.tipo_sangre + ' - ' + [' - '.join(list(alergia.values())) for alergia in self.alergias][0]
